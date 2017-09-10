@@ -19,7 +19,9 @@
     <th>Date Time</th>
     <th>Description</th>
     <th>Calories</th>
-
+    <th>Delete</th>
+    <th>Update</th>
+    <a href="meals?action=create">Add Meal </a>
     <c:forEach items="${mealList}" var="meal">
         <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.MealWithExceed" scope="page" />
         <tr class="${meal.exceed ? 'red' : 'green'}">
@@ -27,6 +29,8 @@
             <td><c:out value="${meal.dateTime.toString().replace('T',' ')}"/> </td>
             <td><c:out value="${meal.description}"/> </td>
             <td><c:out value="${meal.calories}"/></td>
+            <td><a href="meals?action=delete&mealId=<c:out value="${meal.id}"/>">Delete</a> </td>
+            <td><a href="meals?action=update&mealId=<c:out value="${meal.id}"/>">Update</a></td>
         </tr>
     </c:forEach>
 </table>
